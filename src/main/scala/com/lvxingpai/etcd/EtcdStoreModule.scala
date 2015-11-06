@@ -1,7 +1,7 @@
 package com.lvxingpai.etcd
 
-import play.api.inject.{Binding, Module}
-import play.api.{Configuration, Environment}
+import play.api.inject.{ Binding, Module }
+import play.api.{ Configuration, Environment }
 
 /**
  * Created by zephyre on 11/1/15.

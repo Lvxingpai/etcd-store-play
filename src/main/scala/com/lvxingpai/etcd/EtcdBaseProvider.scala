@@ -1,8 +1,8 @@
 package com.lvxingpai.etcd
 
-import java.util.{ArrayList => JArrayList}
+import java.util.{ ArrayList => JArrayList }
 import javax.inject.Provider
-import com.typesafe.config.{ConfigValueFactory, ConfigValueType}
+import com.typesafe.config.{ ConfigValueFactory, ConfigValueType }
 import play.api.Configuration
 import scala.collection.JavaConversions._
 import scala.concurrent.Future
@@ -25,8 +25,8 @@ abstract class EtcdBaseProvider extends Provider[Configuration] {
       user <- configuration getString "etcdStore.user"
       password <- configuration getString "etcdStore.password"
     } yield {
-        EtcdAuth(user, password)
-      }
+      EtcdAuth(user, password)
+    }
     (host, port, schema, auth)
   }
 
@@ -37,10 +37,9 @@ abstract class EtcdBaseProvider extends Provider[Configuration] {
    * @return
    */
   protected def etcdConf(builder: EtcdBaseBuilder, configuration: Configuration,
-                         builderKeys: String): Future[Configuration] = {
+    builderKeys: String): Future[Configuration] = {
     // 获得所有的键
-    val confKeys = (configuration getList builderKeys getOrElse ConfigValueFactory.fromIterable(new
-        JArrayList())).toSeq
+    val confKeys = (configuration getList builderKeys getOrElse ConfigValueFactory.fromIterable(new JArrayList())).toSeq
 
     // 从本地配置中获取keys，构建builder
     val finalBuilder = confKeys.foldLeft(builder)((builder, configValue) => {
